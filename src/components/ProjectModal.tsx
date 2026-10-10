@@ -91,19 +91,38 @@ export default function ProjectModal({ project, onClose, onSwitch }: { project: 
               {project.logline}
             </motion.p>
 
-            {project.github && (
+            {(project.live || project.github) && (
               <motion.div variants={block} className="mt-6 flex flex-wrap gap-3">
-                <Magnetic>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="link"
-                    className="flex min-h-12 items-center gap-2 rounded-md bg-bone px-6 text-[15px] font-bold text-ink transition hover:bg-white"
-                  >
-                    GitHub ↗
-                  </a>
-                </Magnetic>
+                {project.live && (
+                  <Magnetic>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="play"
+                      className="flex min-h-12 items-center gap-2 rounded-md bg-crimson px-6 text-[15px] font-bold text-white shadow-[0_0_30px_rgba(229,19,43,0.4)] transition hover:bg-crimson-2"
+                    >
+                      <span>▶</span> Live Demo ↗
+                    </a>
+                  </Magnetic>
+                )}
+                {project.github && (
+                  <Magnetic>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="link"
+                      className={`flex min-h-12 items-center gap-2 rounded-md px-6 text-[15px] font-bold transition ${
+                        project.live
+                          ? 'border border-white/25 bg-black/40 text-bone hover:border-bone hover:bg-white/10'
+                          : 'bg-bone text-ink hover:bg-white'
+                      }`}
+                    >
+                      GitHub ↗
+                    </a>
+                  </Magnetic>
+                )}
               </motion.div>
             )}
 

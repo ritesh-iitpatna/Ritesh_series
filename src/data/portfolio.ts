@@ -23,6 +23,7 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/ritesh-iitpatna/',
     github: 'https://github.com/ritesh-iitpatna',
   },
+  formspreeEndpoint: 'https://formspree.io/f/mdekqkvb',
   resumePdf: '/assets/Ritesh_Kumar_Resume.pdf',
   portrait: {
     src: '/assets/portrait-720.webp',
@@ -76,6 +77,7 @@ export type Project = {
   features: string[];
   metrics: Metric[];
   github?: string;
+  live?: string;
   palette: Palette;
   motif: 'shield' | 'flow' | 'tenants';
 };
@@ -136,6 +138,7 @@ export const projects: Project[] = [
       { value: 'WebP', label: 'optimized asset loading' },
     ],
     github: 'https://github.com/ritesh-iitpatna/portfolio',
+    live: 'https://portfolio-one-phi-bh3n1xdisv.vercel.app/',
     palette: { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' },
     motif: 'shield',
   },

@@ -5,7 +5,7 @@ import { useSmoothScroll } from '../hooks/smoothScroll';
 import { EASE, Magnetic, Particles } from './fx';
 import { SeriesMark } from './Poster';
 
-export default function FinalCTA({ onReplay }: { onReplay: () => void }) {
+export default function FinalCTA({ onReplay, onContact }: { onReplay: () => void; onContact?: () => void }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollTo } = useSmoothScroll();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start 0.2'] });
@@ -14,7 +14,7 @@ export default function FinalCTA({ onReplay }: { onReplay: () => void }) {
   const opacity = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
 
   const ctas = [
-    { label: "Let's Build", href: `mailto:${profile.email}?subject=${encodeURIComponent("Let's build something")}`, primary: true, cursor: 'play' },
+    { label: "Let's Build", action: onContact, href: `mailto:${profile.email}?subject=${encodeURIComponent("Let's build something")}`, primary: true, cursor: 'play' },
     { label: 'LinkedIn', href: profile.links.linkedin, cursor: 'link' },
     { label: 'GitHub', href: profile.links.github, cursor: 'link' },
     { label: 'Email', href: `mailto:${profile.email}`, cursor: 'link' },
@@ -61,19 +61,31 @@ export default function FinalCTA({ onReplay }: { onReplay: () => void }) {
         {ctas.map((c) => (
           <motion.div key={c.label} variants={{ hidden: { opacity: 0, y: 20, scale: 0.9 }, show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: EASE } } }}>
             <Magnetic>
-              <a
-                href={c.href}
-                target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
-                data-cursor={c.cursor}
-                className={`flex min-h-12 items-center gap-2 rounded-full px-7 text-sm font-bold tracking-[0.12em] transition ${
-                  c.primary ? 'bg-crimson text-white shadow-[0_0_50px_rgba(229,19,43,0.5)] hover:bg-crimson-2' : 'border border-white/25 text-bone hover:border-bone hover:bg-white/10'
-                }`}
-              >
-                {c.primary && <span>▶</span>}
-                {c.label.toUpperCase()}
-                {!c.primary && <span className="text-mist">↗</span>}
-              </a>
+              {c.action ? (
+                <button
+                  type="button"
+                  onClick={c.action}
+                  data-cursor={c.cursor}
+                  className="flex min-h-12 items-center gap-2 rounded-full px-7 text-sm font-bold tracking-[0.12em] bg-crimson text-white shadow-[0_0_50px_rgba(229,19,43,0.5)] transition hover:bg-crimson-2"
+                >
+                  <span>▶</span>
+                  {c.label.toUpperCase()}
+                </button>
+              ) : (
+                <a
+                  href={c.href}
+                  target={c.href?.startsWith('http') ? '_blank' : undefined}
+                  rel={c.href?.startsWith('http') ? 'noreferrer' : undefined}
+                  data-cursor={c.cursor}
+                  className={`flex min-h-12 items-center gap-2 rounded-full px-7 text-sm font-bold tracking-[0.12em] transition ${
+                    c.primary ? 'bg-crimson text-white shadow-[0_0_50px_rgba(229,19,43,0.5)] hover:bg-crimson-2' : 'border border-white/25 text-bone hover:border-bone hover:bg-white/10'
+                  }`}
+                >
+                  {c.primary && <span>▶</span>}
+                  {c.label.toUpperCase()}
+                  {!c.primary && <span className="text-mist">↗</span>}
+                </a>
+              )}
             </Magnetic>
           </motion.div>
         ))}

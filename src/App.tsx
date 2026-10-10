@@ -23,6 +23,7 @@ import { EASE } from './components/fx';
 const PlayIntro = lazy(() => import('./components/PlayIntro'));
 const ProjectModal = lazy(() => import('./components/ProjectModal'));
 const ResumeModal = lazy(() => import('./components/ResumeModal'));
+const ContactModal = lazy(() => import('./components/ContactModal'));
 
 type Stage = 'opening' | 'profiles' | 'home';
 
@@ -52,6 +53,7 @@ function Series() {
   const [playing, setPlaying] = useState(false);
   const [project, setProject] = useState<Project | null>(null);
   const [resumeOpen, setResumeOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const { scrollTo, lock, unlock } = useSmoothScroll();
 
@@ -92,6 +94,7 @@ function Series() {
   const closeIntro = useCallback(() => setPlaying(false), []);
   const closeProject = useCallback(() => setProject(null), []);
   const closeResume = useCallback(() => setResumeOpen(false), []);
+  const closeContact = useCallback(() => setContactOpen(false), []);
 
   const sections: Record<SectionId, ReactNode> = {
     about: <About />,
@@ -124,7 +127,7 @@ function Series() {
                 {sections[id]}
               </Scene>
             ))}
-            <FinalCTA onReplay={() => setStage('opening')} />
+            <FinalCTA onReplay={() => setStage('opening')} onContact={() => setContactOpen(true)} />
           </main>
         </motion.div>
       )}
@@ -133,6 +136,7 @@ function Series() {
         <AnimatePresence>{playing && <PlayIntro key="intro" onClose={closeIntro} />}</AnimatePresence>
         <AnimatePresence>{project && <ProjectModal key="project" project={project} onClose={closeProject} onSwitch={setProject} />}</AnimatePresence>
         <AnimatePresence>{resumeOpen && <ResumeModal key="resume" onClose={closeResume} />}</AnimatePresence>
+        <AnimatePresence>{contactOpen && <ContactModal key="contact" onClose={closeContact} />}</AnimatePresence>
       </Suspense>
 
       <AnimatePresence>
