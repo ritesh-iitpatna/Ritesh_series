@@ -6,7 +6,7 @@ export default function About() {
   const facts = [
     { k: 'Now', v: 'MCA, IIT Patna', s: `${education[0].school} · ${education[0].score}` },
     { k: 'Undergrad', v: 'B.Sc. Physical Science (Electronics)', s: `${education[1].school} · ${education[1].score}` },
-    { k: 'Primary language', v: 'Core Java', s: 'with Next.js, React, TypeScript' },
+    { k: 'Primary language', v: 'Core Java', s: 'with Android Development & Kotlin' },
     { k: 'Based in', v: profile.location, s: 'India' },
   ];
 

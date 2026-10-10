@@ -13,9 +13,9 @@ export const profile = {
   /** Fictional studio card shown at the very start of the opening sequence. */
   originalLabel: 'A RITESH ORIGINAL',
   role: 'Software Developer',
-  tagline: ['Software Developer', 'Core Java', 'Next.js & React'],
+  tagline: ['Software Developer', 'Core Java', 'Android Development'],
   intro:
-    'An MCA student at IIT Patna and software developer with a strong foundation in Core Java, Data Structures & Algorithms, OOP, JDBC, MySQL, and modern responsive web development with Next.js, React, and TypeScript.',
+    'An MCA student at IIT Patna and software developer with a strong foundation in Core Java, Data Structures & Algorithms, OOP, JDBC, MySQL, and mobile application development with Android, Kotlin, and Java.',
   location: 'New Delhi, India',
   email: 'ritesh.iitpatna@gmail.com',
   phone: '7217845884',
@@ -263,16 +263,16 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: 'frontend',
-    title: 'Web & Frontend',
-    subtitle: 'Modern interfaces & web platform',
+    id: 'android',
+    title: 'Android Development',
+    subtitle: 'Native mobile architecture & UI',
     skills: [
-      { name: 'React', mono: 'Re' },
-      { name: 'Next.js', mono: 'Nx' },
-      { name: 'TypeScript', mono: 'Ts' },
-      { name: 'Tailwind CSS', mono: 'Tc' },
-      { name: 'HTML5', mono: 'Ht' },
-      { name: 'Framer Motion', mono: 'Fm' },
+      { name: 'Android', mono: 'An', note: 'Primary' },
+      { name: 'Kotlin', mono: 'Kt', note: 'Native' },
+      { name: 'Android Studio', mono: 'As' },
+      { name: 'Jetpack Compose', mono: 'Jc' },
+      { name: 'XML Layouts', mono: 'Xm' },
+      { name: 'Java for Android', mono: 'Ja' },
     ],
   },
   {
@@ -334,7 +334,12 @@ export const skillEvidence: Record<string, string[]> = {
   Python: ['Basic scripting & automation'],
   TypeScript: ['Personal Developer Portfolio'],
   JavaScript: ['Personal Developer Portfolio', 'Interactive UI animations'],
-  Kotlin: ['Currently exploring modern backend & mobile'],
+  Kotlin: ['Modern Android & backend mobile applications'],
+  Android: ['Native Android architecture & app development', 'IIT Patna projects'],
+  'Android Development': ['Mobile app engineering with Kotlin & Java'],
+  'Jetpack Compose': ['Declarative modern UI layouts & state management'],
+  'XML Layouts': ['Classic Android view hierarchies, themes & animations'],
+  'Java for Android': ['Object-oriented mobile components & services'],
   JDBC: ['Bank Management System', 'Relational database connectivity'],
   'Java Swing': ['Bank Management System (Desktop ATM UI)'],
   'Java AWT': ['Bank Management System'],
@@ -520,9 +525,9 @@ export const topPicks: TopPick[] = [
   { label: 'Academic High', title: 'CGPA > 8.0', detail: '3 consecutive semesters at Delhi University', palette: jade },
   { label: 'School Honor', title: 'Gold Medalist', detail: 'Student of the Year Award & 1st Rank Class XI', palette: amber },
   { label: 'Problem Solving', title: 'Mental Math', detail: '2nd Position in inter-school competition', palette: crimson },
-  { label: 'Web Platform', title: 'Next.js & React', detail: 'TypeScript, Tailwind CSS & Framer Motion', palette: ocean },
-  { label: 'Database Backend', title: 'MySQL', detail: 'Relational database schema & JDBC integration', palette: jade },
-  { label: 'Currently Learning', title: 'Kotlin', detail: 'Exploring modern backend & Android development', palette: violet },
+  { label: 'Mobile Platform', title: 'Android Development', detail: 'Kotlin, Java, Android Studio & Jetpack UI', palette: jade },
+  { label: 'Database Backend', title: 'MySQL', detail: 'Relational database schema & JDBC integration', palette: ocean },
+  { label: 'Native Language', title: 'Kotlin', detail: 'Modern native Android development & Coroutines', palette: violet },
 ];
 
 /** Slides for the "▶ Play Intro" cinematic sequence. */
@@ -537,9 +542,9 @@ export const introSlides: IntroSlide[] = [
   },
   {
     kicker: 'Skills',
-    title: 'Core Java First.',
-    lines: ['OOP, Collections Framework, Exception Handling, JDBC, MySQL', 'Next.js, React, TypeScript, Tailwind CSS · Git, GitHub'],
-    chips: ['Java', 'JDBC', 'MySQL', 'Next.js', 'React', 'TypeScript'],
+    title: 'Core Java & Android',
+    lines: ['OOP, Collections Framework, Exception Handling, JDBC, MySQL', 'Android Development, Kotlin, Android Studio · Git, GitHub'],
+    chips: ['Java', 'Android', 'Kotlin', 'JDBC', 'MySQL', 'Android Studio'],
   },
   {
     kicker: 'Projects',
