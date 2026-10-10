@@ -23,7 +23,11 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/ritesh-iitpatna/',
     github: 'https://github.com/ritesh-iitpatna',
   },
-  formspreeEndpoint: 'https://formspree.io/f/mdekqkvb',
+  formspreeEndpoint:
+    import.meta.env.VITE_FORMSPREE_ENDPOINT ||
+    (import.meta.env.VITE_FORMSPREE_KEY
+      ? `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_KEY}`
+      : 'https://formspree.io/f/mdekqkvb'),
   resumePdf: '/assets/Ritesh_Kumar_Resume.pdf',
   portrait: {
     src: '/assets/portrait-720.webp',

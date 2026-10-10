@@ -4,3 +4,6 @@ dist
 *.local
 *.zip
 .claude
+.env
+.env.local
+.env.*.local
