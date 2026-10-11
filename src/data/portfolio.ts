@@ -18,7 +18,6 @@ export const profile = {
     'An MCA student at IIT Patna and software developer with a strong foundation in Core Java, Data Structures & Algorithms, OOP, JDBC, MySQL, and mobile application development with Android, Kotlin, and Java.',
   location: 'New Delhi, India',
   email: 'ritesh.iitpatna@gmail.com',
-  phone: '7217845884',
   links: {
     linkedin: 'https://www.linkedin.com/in/ritesh-iitpatna/',
     github: 'https://github.com/ritesh-iitpatna',
@@ -27,7 +26,7 @@ export const profile = {
     import.meta.env.VITE_FORMSPREE_ENDPOINT ||
     (import.meta.env.VITE_FORMSPREE_KEY
       ? `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_KEY}`
-      : 'https://formspree.io/f/mdekqkvb'),
+      : ''),
   resumePdf: '/assets/Ritesh_Kumar_Resume.pdf',
   portrait: {
     src: '/assets/portrait-720.webp',

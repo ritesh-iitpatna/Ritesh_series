@@ -25,6 +25,17 @@ npm run preview
 
 The static site is written to `dist/` and can be deployed as-is to Vercel, Netlify, GitHub Pages or any static host.
 
+## Environment variables
+
+Create a `.env` file (see [`.env.example`](.env.example)) in the project root:
+
+```bash
+VITE_FORMSPREE_KEY=your_formspree_key_here
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your_formspree_key_here
+```
+
+If not configured, the contact modal will gracefully open a pre-filled direct email transmission (`mailto:`) as fallback.
+
 ## Updating the content
 
 **All content lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts).** It was generated from the resume, and every component reads from it.
@@ -58,7 +69,7 @@ src/
   data/portfolio.ts        ← single source of truth (from the resume)
   App.tsx                  ← stages: opening → profile select → home; overlays
   components/
-    OpeningSequence        ← black → studio card → SUSHMITA → THE SERIES → portrait → ▶ PLAY
+    OpeningSequence        ← black → studio card → RITESH → THE SERIES → portrait → ▶ PLAY
     ProfileSelector        ← "Who's watching?" (changes section order only)
     Navbar                 ← hide-on-scroll nav, profile switcher, mobile menu
     Hero                   ← billboard: parallax portrait, particles, light streaks, floating chips

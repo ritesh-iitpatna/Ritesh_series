@@ -45,6 +45,17 @@ export default function ContactModal({ onClose }: ContactModalProps) {
     setStatus('submitting');
     setErrorMessage('');
 
+    if (!profile.formspreeEndpoint) {
+      // Graceful fallback when endpoint is not configured in environment
+      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
+        `Contact from ${name.trim()}`
+      )}&body=${encodeURIComponent(
+        `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nReason / Message:\n${reason.trim()}`
+      )}`;
+      setStatus('success');
+      return;
+    }
+
     try {
       const response = await fetch(profile.formspreeEndpoint, {
         method: 'POST',
@@ -56,6 +67,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
           name: name.trim(),
           email: email.trim(),
           reason: reason.trim(),
+          message: reason.trim(),
         }),
       });
 
@@ -129,7 +141,7 @@ export default function ContactModal({ onClose }: ContactModalProps) {
 
         <header className="mb-6">
           <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.32em] text-crimson-2">
-            <span className="font-display text-lg tracking-normal">S</span>
+            <span className="font-display text-lg tracking-normal">R</span>
             Direct Transmission
           </p>
           <h2 id="contact-modal-title" className="mt-1 font-display text-3xl tracking-wide text-bone sm:text-4xl">
