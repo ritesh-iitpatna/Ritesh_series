@@ -37,7 +37,8 @@ export default function FinalCTA({ onReplay, onContact }: { onReplay: () => void
         className="relative font-display leading-[0.85] text-bone"
         style={{ fontSize: 'clamp(3.4rem, 13vw, 12rem)', letterSpacing: spacing, filter: blur, opacity }}
       >
-        TO BE CONTINUED…
+        <span className="block whitespace-nowrap">TO BE</span>
+        <span className="block whitespace-nowrap">CONTINUED…</span>
       </motion.h2>
 
       <motion.div
