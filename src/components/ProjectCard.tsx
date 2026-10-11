@@ -37,7 +37,29 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
             <span className="font-display text-xl leading-none text-crimson-2">R</span>
             <span className="text-[10px] font-bold tracking-[0.34em] text-bone/80">ORIGINAL</span>
           </div>
-          <span className="absolute right-5 top-5 rounded border border-white/30 px-1.5 py-px text-[10px] font-bold text-bone sm:right-7 sm:top-7">{project.year}</span>
+          <div className="absolute right-5 top-5 z-10 flex items-center gap-2 sm:right-7 sm:top-7 [transform:translateZ(30px)]">
+            {project.live && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="play"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`Open live demo for ${project.title}`}
+                className="group/live flex items-center gap-1.5 rounded-full border border-crimson/60 bg-crimson/25 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-bone shadow-[0_0_12px_rgba(229,19,43,0.35)] backdrop-blur transition hover:border-crimson hover:bg-crimson/40 hover:shadow-[0_0_20px_rgba(229,19,43,0.6)]"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-crimson-2 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-crimson" />
+                </span>
+                <span>LIVE</span>
+                <span className="text-[9px] transition-transform duration-200 group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5">↗</span>
+              </a>
+            )}
+            <span className="rounded border border-white/30 bg-black/30 px-1.5 py-1 text-[10px] font-bold text-bone backdrop-blur">
+              {project.year}
+            </span>
+          </div>
 
           <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 [transform:translateZ(40px)]">
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-mist">{project.genre}</p>
@@ -52,20 +74,10 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
                 </span>
               ))}
             </div>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">▶ View Project</span>
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="play"
-                  onClick={(e) => e.stopPropagation()}
-                  className="flex min-h-11 items-center gap-2 rounded-md border border-crimson/50 bg-crimson/20 px-4 text-sm font-semibold text-bone backdrop-blur transition hover:border-crimson hover:bg-crimson/30"
-                >
-                  Live ↗
-                </a>
-              )}
+            <div className="mt-5 flex items-center gap-2.5 sm:gap-3">
+              <span className="flex min-h-10 sm:min-h-11 items-center gap-2 rounded-md bg-bone px-4 sm:px-5 text-xs sm:text-sm font-bold text-ink transition group-hover:bg-white">
+                ▶ View Project
+              </span>
               {project.github && (
                 <a
                   href={project.github}
@@ -73,7 +85,7 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
                   rel="noreferrer"
                   data-cursor="link"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex min-h-11 items-center gap-2 rounded-md border border-white/25 bg-black/30 px-4 text-sm font-semibold text-bone backdrop-blur transition hover:border-bone"
+                  className="flex min-h-10 sm:min-h-11 items-center gap-2 rounded-md border border-white/25 bg-black/30 px-3.5 sm:px-4 text-xs sm:text-sm font-semibold text-bone backdrop-blur transition hover:border-bone"
                 >
                   GitHub ↗
                 </a>
